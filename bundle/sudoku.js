@@ -10948,11 +10948,11 @@ function getRamdomBoardFor(array) {
 
 function randomBoard(difficulty) {
   switch (difficulty) {
-    case 'easy':
+    case 'facil':
       return getRamdomBoardFor(boardsEasy);
-    case 'medium':
+    case 'medio':
       return getRamdomBoardFor(boardsMedium);
-    case 'hard':
+    case 'dificil':
       return getRamdomBoardFor(boardsHard);
   }
 }
@@ -10998,12 +10998,16 @@ var v = new Vue({
   el: '#app',
   data: {
     game: null,
-    time: null
+    time: null,
+    jugador: null,
+    ultimoId: 0,
+    jugadores: []
   },
   methods: {
     difficultyClick: function(event) {
       event.preventDefault();
-
+      this.ultimoId++;
+      this.jugadores.push({id:this.ultimoId, nombre: this.jugador, tipo: event.target.getAttribute('data-difficulty')});
       var board = randomBoard(event.target.getAttribute('data-difficulty'));
       var game = [];
       for (var i = 0; i < 81; i++) {
@@ -11031,13 +11035,18 @@ var v = new Vue({
       this.time = 0;
       this.saveToLocalStorage();
     },
+    agregaJugador: function(event)
+    {
+
+    },
     continueGameClick: function(event) {
       event.preventDefault();
       this.game = JSON.parse(localStorage.currentGame);
       this.time = parseInt(localStorage.time);
     },
     hasExistingGame: function() {
-      return !!localStorage.currentGame;
+      return false; // esto es para evitar que se continue el juego
+      //return !!localStorage.currentGame;
     },
     markAllWithoutConflict: function() {
       for (var i = 0; i < 9; i++) {
