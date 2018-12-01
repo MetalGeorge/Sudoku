@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Miembros del Grupo:</h2>
 <ul>
 <li> Raúl Vargas Choquilla </li>
 <li> Carlos Montellano Barriga </li>
@@ -15,7 +14,7 @@ export default {
   name: 'Home',
   data () {
     return {
-      msg: 'Sudoku SPA con Vue.js'
+      msg: 'Miembros del Grupo'
     }
   }
 }

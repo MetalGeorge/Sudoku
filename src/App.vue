@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1>Sudoku SPA con Vue.js </h1>
   <router-link v-bind:to="'/'">Home</router-link>
   <router-link v-bind:to="'/Sudoku'">Sudoku</router-link>
   <router-link v-bind:to="'/Tutorial'">Tutorial</router-link>
