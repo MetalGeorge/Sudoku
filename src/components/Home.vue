@@ -1,7 +1,12 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    PONER AQUÍ DATOS DEL GRUPO
+    <h2>Miembros del Grupo:</h2>
+<ul>
+<li> Raúl Vargas Choquilla </li>
+<li> Carlos Montellano Barriga </li>
+<li> Jorge Escobar Pacheco </li>
+</ul>
   </div>
 </template>
 

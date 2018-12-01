@@ -1,6 +1,9 @@
-# spa
+# SUdoku SPA
 
-> A Vue.js project
+> Se usó webpack para generar la app Vue.js 
+
+
+Los siguientes elementos permiten construir la app.
 
 ## Build Setup
 
