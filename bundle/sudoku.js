@@ -11001,13 +11001,15 @@ var v = new Vue({
     time: null,
     jugador: null,
     ultimoId: 0,
-    jugadores: []
+    jugadores: [],
+    completado: null
   },
   methods: {
     difficultyClick: function(event) {
       event.preventDefault();
+      this.completado = false ;
       this.ultimoId++;
-      this.jugadores.push({id:this.ultimoId, nombre: this.jugador, tipo: event.target.getAttribute('data-difficulty')});
+      this.jugadores.push({id:this.ultimoId, nombre: this.jugador, tipo: event.target.getAttribute('data-difficulty'), completado: "No"});
       var board = randomBoard(event.target.getAttribute('data-difficulty'));
       var game = [];
       for (var i = 0; i < 81; i++) {
@@ -11035,10 +11037,6 @@ var v = new Vue({
       this.time = 0;
       this.saveToLocalStorage();
     },
-    agregaJugador: function(event)
-    {
-
-    },
     continueGameClick: function(event) {
       event.preventDefault();
       this.game = JSON.parse(localStorage.currentGame);
@@ -11064,6 +11062,17 @@ var v = new Vue({
         }
         nums[array[i].value] = i;
       }
+    },
+    checkCompleted: function() {
+      var resultado = true;
+      for (var i = 0; i < 9; i++) {
+        var arr = [];
+        for (var j = 0; j < 9; j++) {
+          if (this.game[i][j] === null);
+            resultado = false;
+        }
+      }
+      this.completado = resultado;
     },
     checkConflicts: function() {
       this.markAllWithoutConflict();
@@ -11131,6 +11140,14 @@ var v = new Vue({
     },
     backClick: function(event) {
       event.preventDefault();
+      
+      var tipo = this.jugadores[this.jugadores.length -1].tipo;
+      this.jugadores.pop();
+      var resultado = "No";
+
+      if (this.completado === true)
+        resultado = this.formatedTime();
+      this.jugadores.push({id:this.ultimoId, nombre: this.jugador, tipo: tipo, completado: resultado});
       this.game = null;
       this.time = null;
     },

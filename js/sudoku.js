@@ -35,6 +35,30 @@ function formatTimeFromSeconds(sec) {
   return str;
 };
 
+
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+// import the vue instance
+import Vue from 'vue'
+// import the App component
+import App from './App'
+// import the vue router
+import VueRouter from 'vue-router'
+// import the hello component
+import Home from './components/Home'
+import Tutorial from './components/Tutorial'
+
+const routes = [
+  { path: '/', component: Home },
+  { path: '/tutorial', component: Tutorial },
+  { path: '/sudoku', component: Sudoku }
+]
+
+const router = new VueRouter({
+  routes, // short for routes: routes
+  mode: 'history'
+})
+
 var v = new Vue({
   el: '#app',
   data: {
